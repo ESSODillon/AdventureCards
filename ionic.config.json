@@ -1,0 +1,7 @@
+{
+  "name": "ExploreComponents",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
