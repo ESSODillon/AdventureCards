@@ -51,14 +51,9 @@ export class HomePage {
 
   favoriteCard(cardIndex): void {
 
-    if(this.cards[cardIndex].liked == false) {
-      this.cards[cardIndex].numOfLikes++;
-      this.cards[cardIndex].liked = true;
-      // this.cards[cardIndex].liked = !this.cards[cardIndex].liked;
-    } else {
-      this.cards[cardIndex].numOfLikes--;
-      this.cards[cardIndex].liked = false;
-    }
+    this.cards[cardIndex].liked = !this.cards[cardIndex].liked;
+
+    this.cards[cardIndex].liked ? this.cards[cardIndex].numOfLikes++ : this.cards[cardIndex].numOfLikes--;
   }
 
   async addCard():  Promise <void> {
@@ -95,6 +90,8 @@ export class HomePage {
         {
           text: "Save",
           handler: async (data) => {
+            data.liked = false;
+            data.numOfLikes = 0;
             this.cards.push(data);
             this.presentToast();
           },
