@@ -1,20 +1,33 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      {{title}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-card *ngFor="let card of cards;let indexOfelement=index;">
+    <img src="{{card.cardImgUrl}}">
+    <div class="likes">
+      <ion-icon (click)="favoriteCard(indexOfelement)" name="star-outline" size="medium"></ion-icon>
+      <p>{{card.numOfLikes}}</p>
+    </div>
+    <ion-card-header>
+      <ion-card-subtitle>{{card.subTitle}}</ion-card-subtitle>
+      <ion-card-title>{{card.title}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      {{card.description}}
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+    <ion-fab-button color="danger" (click)="addCard()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab> 
+  
 </ion-content>
