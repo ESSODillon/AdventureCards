@@ -15,7 +15,6 @@ export class HomePage {
       cardImgUrl: 'assets/images/1.jpeg',
       liked: false,
       numOfLikes: 0,
-      icon: "star-outline",
       subTitle: 'Hiking',
       title: 'Climb up a Mountain',
       description: 'Hiking up a mountain is both exhausting and rewarding, you should definitely try it for yourself.'
@@ -24,7 +23,6 @@ export class HomePage {
       cardImgUrl: 'assets/images/2.jpeg',
       liked: false,
       numOfLikes: 5,
-      icon: "star-outline",
       subTitle: 'Trekking',
       title: 'Cross a River',
       description: 'Trekking across rivers with friends is a great way to explore and get exercise'
@@ -33,7 +31,6 @@ export class HomePage {
       cardImgUrl: 'assets/images/3.jpeg',
       liked: false,
       numOfLikes: 20,
-      icon: "star-outline",
       subTitle: 'Sightseeing',
       title: 'Stare into the Distance',
       description: 'Stopping for a moment to take in your surrondings is a must for any adventurer'
@@ -42,7 +39,6 @@ export class HomePage {
       cardImgUrl: 'assets/images/4.jpeg',
       liked: false,
       numOfLikes: 8,
-      icon: "star-outline",
       subTitle: 'Balancing',
       title: 'Cross a Bridge',
       description: 'Walking across a bridge seems pretty simple, but I swear this act is absolutely life changing. I would never lie to you.'
@@ -54,9 +50,15 @@ export class HomePage {
   constructor(private alertCtrl: AlertController, private toastCtrl: ToastController) {}
 
   favoriteCard(cardIndex): void {
-    this.cards[cardIndex].numOfLikes++;
-    this.cards[cardIndex].liked = true;
-    this.cards[cardIndex].icon = "star";
+
+    if(this.cards[cardIndex].liked == false) {
+      this.cards[cardIndex].numOfLikes++;
+      this.cards[cardIndex].liked = true;
+      // this.cards[cardIndex].liked = !this.cards[cardIndex].liked;
+    } else {
+      this.cards[cardIndex].numOfLikes--;
+      this.cards[cardIndex].liked = false;
+    }
   }
 
   async addCard():  Promise <void> {
