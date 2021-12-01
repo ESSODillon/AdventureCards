@@ -11,7 +11,7 @@
   <ion-card *ngFor="let card of cards;let indexOfelement=index;">
     <img src="{{card.cardImgUrl}}">
     <div class="likes">
-      <ion-icon (click)="favoriteCard(indexOfelement)" name="star-outline" size="medium"></ion-icon>
+      <ion-icon (click)="favoriteCard(indexOfelement)" name="{{card.icon}}" size="medium"></ion-icon>
       <p>{{card.numOfLikes}}</p>
     </div>
     <ion-card-header>
